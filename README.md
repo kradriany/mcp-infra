@@ -1,4 +1,3 @@
-# mcp-infra
 ## Infrastructure Diagram
 
 Here’s the current Terraform-provisioned architecture:
@@ -6,14 +5,14 @@ Here’s the current Terraform-provisioned architecture:
 ```mermaid
 graph LR
   subgraph CI/CD
-    A[GitHub Actions<br/>(push to main)] -->|terraform apply| B[Terraform]
+    A["GitHub Actions\n(push to main)"] -->|terraform apply| B[Terraform]
   end
 
   subgraph AWS
-    B --> VPC[VPC<br/>(10.0.0.0/16)]
+    B --> VPC[VPC\n(10.0.0.0/16)]
     B --> ECR[ECR Repository]
     B --> IAM[IAM Roles & Policies]
-    B --> ECS[ECS Cluster<br/>(Fargate)]
+    B --> ECS[ECS Cluster\n(Fargate)]
     B --> CW[CloudWatch]
 
     VPC --> Subnets[Public & Private Subnets]
